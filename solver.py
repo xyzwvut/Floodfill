@@ -3,10 +3,6 @@ import uuid
 
 from playground import Position, FieldColorPalette
 
-# TODO: Remove
-import sys
-from termcolor import colored
-
 """
  TODO:
  - Need a way to walk the n-dimensional space in a
