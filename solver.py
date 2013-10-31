@@ -5,9 +5,6 @@ from playground import Position, FieldColorPalette
 
 """
  TODO:
- - Need a way to walk the n-dimensional space in a
-   controlled way, so that every field gets visited
-   one time.
 """
 
 class Area:
@@ -31,7 +28,6 @@ class Area:
 
     def bordering_colors(self):
         """Find colors that give a valid next step"""
-        # TODO:Return a ColorPalette
         palette = FieldColorPalette()
 
         def add_color(field, inside):
