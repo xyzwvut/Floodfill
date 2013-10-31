@@ -50,7 +50,7 @@ class Area:
 
            handler expects one argument, the field
 
-           Take the color as an argument instead of 
+           Take the color as an argument instead of
            using self.key_field() because the handler
            may change the color.
         """

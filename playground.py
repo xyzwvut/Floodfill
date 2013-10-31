@@ -24,7 +24,7 @@ class ColorPalette:
 
     def get_fg_color(self, num):
         return self.fg[num]
-    
+
     def get_bg_color(self, num):
         return self.bg[num]
 
@@ -34,7 +34,7 @@ class ColorPalette:
     def get_a_fg_color(self):
         idx = self.get_random_idx()
         return self.fg[idx]
-    
+
     def get_a_bg_color(self):
         idx = self.get_random_idx()
         return self.bg[idx]
@@ -199,7 +199,7 @@ class Position:
 
 
 class PlayGround:
-    """Playground""" 
+    """Playground"""
 
     class OutOfBoundsException(Exception):
         pass
