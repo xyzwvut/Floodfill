@@ -59,11 +59,11 @@ class FieldColorPalette:
                            palette.get_bg_color(idx))
             self.colors.append(c)
 
-    def num_colors(self):
-        return len(self.colors) - 1
+    def num(self):
+        return len(self.colors)
 
     def get_random_idx(self):
-        return random.randint(1, self.num_colors())
+        return random.randint(1, self.num() - 1)
 
     def get_a_color(self):
         idx = self.get_random_idx()
