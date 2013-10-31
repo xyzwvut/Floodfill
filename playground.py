@@ -45,7 +45,7 @@ class FieldColorPalette:
        Specifically set foreground and background colors
     """
 
-    def __init__(self, palette, num_colors=0, colors=[]):
+    def __init__(self, palette=ColorPalette(), num_colors=0, colors=[]):
         self.colors = []
 
         # Specific colors given
@@ -192,7 +192,7 @@ class PlayGround:
         """Dimensions x, y, number of colors available"""
         self.x = x
         self.y = y
-        self.palette = FieldColorPalette(palette=ColorPalette(), num_colors=num_colors)
+        self.palette = FieldColorPalette(num_colors=num_colors)
         self.field = [[Field(self.palette) for i in range(x)] for i in range(y)]
 
     def inside(self, pos):
