@@ -59,7 +59,16 @@ class FieldColorPalette:
                            palette.get_bg_color(idx))
             self.colors.append(c)
 
+    def add(self, field_color):
+        """Add color to palette"""
+        for c in self.colors:
+            if c.is_equal(field_color):
+                return
+
+        self.colors.append(field_color)
+
     def num(self):
+        """Number of colors in the palette"""
         return len(self.colors)
 
     def get_random_idx(self):
@@ -71,6 +80,13 @@ class FieldColorPalette:
 
     def get_color(self, num):
         return self.colors[num]
+
+    def plot(self):
+        """Return palette field color string"""
+        s = ""
+        for c in self.colors:
+            s += "%s" % str(c)
+        return s
 
 
 class FieldColor:
