@@ -28,6 +28,9 @@ class ColorPalette:
     def get_bg_color(self, num):
         return self.bg[num]
 
+    def get_random_idx(self):
+        return random.randint(0, self.num_colors - 1)
+
     def get_a_fg_color(self):
         idx = self.get_random_idx()
         return self.fg[idx]
