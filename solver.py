@@ -1,7 +1,7 @@
 import random
 import uuid
 
-from playground import Position
+from playground import Position, FieldColorPalette
 
 # TODO: Remove
 import sys
@@ -36,17 +36,14 @@ class Area:
     def bordering_colors(self):
         """Find colors that give a valid next step"""
         # TODO:Return a ColorPalette
+        palette = FieldColorPalette()
 
-        colors = set()
         def add_color(field, inside):
             if not inside:
-                # TODO:
-                #   get_color returns new object
-                #   for each color so the set does work
-                colors.add(field.get_color())
+                palette.add(field.get_color())
 
         self.walk(add_color)
-        return colors
+        return palette
 
     def walk_helper(self, pos, color, handler, tag):
         """Helper function to walk the area
@@ -194,21 +191,15 @@ class RandomStrategy:
          2. Get all adjacent colors
          3. Pick random color from that list
         """
-        colors = self.area.bordering_colors()
+        palette = self.area.bordering_colors()
 
-        if len(colors) == 0:
+        if palette.num() == 0:
             return None
 
-        """
-        print "Available Colors: ",
-        for c in colors:
-            sys.stdout.write("%s" % c)
-        print ""
-        """
+        print "Available Colors: %s" % palette.plot()
 
         # Pick a random color
-        color = list(colors)[random.randint(0, len(colors)) - 1]
-
+        color = palette.get_a_color()
         return color
 
 

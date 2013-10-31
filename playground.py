@@ -72,7 +72,7 @@ class FieldColorPalette:
         return len(self.colors)
 
     def get_random_idx(self):
-        return random.randint(1, self.num() - 1)
+        return random.randint(0, self.num() - 1)
 
     def get_a_color(self):
         idx = self.get_random_idx()
