@@ -53,8 +53,8 @@ class FieldColorPalette:
             self.colors = colors
             return
 
-        # Construct field colors
-        for idx in range(0, num_colors):
+        # Construct field colors, do not use white color
+        for idx in range(1, num_colors + 1):
             c = FieldColor(palette.get_fg_color(idx),
                            palette.get_bg_color(idx))
             self.colors.append(c)
