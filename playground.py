@@ -3,9 +3,6 @@ import random
 
 from termcolor import colored
 
-# TODO:
-# - Make 0 special color
-
 class ColorPalette:
     fg = ('white', 'blue', 'cyan', 'magenta',
           'green', 'red', 'yellow')
