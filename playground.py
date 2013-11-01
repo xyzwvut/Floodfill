@@ -122,6 +122,9 @@ class Field:
         # TODO: Neighbours?
         # TODO: n-dimensional?
 
+    def __str__(self):
+        return "Field %s" % self.color
+
     def has_color(self, color):
         return self.color.is_equal(color)
 
