@@ -6,7 +6,7 @@ import random
 from termcolor import colored
 
 from playground import PlayGround, Position
-from solver import Area, Solver, RandomStrategy
+from solver import Area, Solver, RandomStrategy, MostPeripheralsStrategy
 
 def main(args):
     print "Flood fill"
@@ -16,7 +16,8 @@ def main(args):
     pg.fill_random()
     pg.plot()
 
-    solver = Solver(pg, RandomStrategy(pg))
+    #solver = Solver(pg, RandomStrategy(pg))
+    solver = Solver(pg, MostPeripheralsStrategy(pg))
     solver.solve()
 
 if __name__ == '__main__':

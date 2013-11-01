@@ -1,3 +1,4 @@
+import operator
 import random
 import uuid
 
@@ -36,6 +37,17 @@ class Area:
 
         self.walk(add_color)
         return palette
+
+    def bordering_fields(self):
+        """Find colors that give a valid next step"""
+        fields = []
+
+        def add_field(field, inside):
+            if not inside:
+                fields.append(field)
+
+        self.walk(add_field)
+        return fields
 
     def walk_helper(self, pos, color, handler, tag):
         """Helper function to walk the area
@@ -198,15 +210,30 @@ class RandomStrategy:
 class MostPeripheralsStrategy:
     """Pick color that has the most neighbouring fields"""
     def __init__(self, pg):
-        pass
+       self.area = Area(pg, Position(pg, 0, 0))
 
     def next_color(self):
         """
-         1. Get adjacent colors
-         2. Get all remaining fields
-         3. Group by color and count number of fields
-         4. Pick first color
+         1. Get adjacent cfields
+         2. Group by color and count number of fields
+         3. Pick first color
         """
+        fields = self.area.bordering_fields()
+
+        #TODO: Make beautiful
+        colors = {}
+        for c in self.area.pg.palette.colors:
+            colors[c] = 0
+        for c in fields:
+            colors[c.get_color()] += 1
+
+        colors = sorted(colors.iteritems(), key=operator.itemgetter(1))
+        if colors[-1][1] == 0:
+            return None
+
+        return  colors[-1][0]
+
+
 
 class MostUnfloddedColorSolver:
     """Pick color that has the most unflooded fields"""
