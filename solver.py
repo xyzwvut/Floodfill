@@ -165,7 +165,6 @@ class Solver:
             solution.append(color)
 
         self.solution = solution
-        self.print_solution()
 
     def print_solution(self):
         s = "Solution: "
