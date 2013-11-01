@@ -214,7 +214,7 @@ class MostPeripheralsStrategy:
 
     def next_color(self):
         """
-         1. Get adjacent cfields
+         1. Get adjacent fields
          2. Group by color and count number of fields
          3. Pick first color
         """
@@ -232,7 +232,6 @@ class MostPeripheralsStrategy:
             return None
 
         return  colors[-1][0]
-
 
 
 class MostUnfloddedColorSolver:
