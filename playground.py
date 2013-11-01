@@ -213,7 +213,7 @@ class PlayGround:
         self.x = x
         self.y = y
         self.palette = palette
-        self.field = [[Field(self.palette) for i in range(x)] for i in range(y)]
+        self.field = [[Field(self.palette) for i in range(x)] for j in range(y)]
 
     def inside(self, pos):
         """Is position inside the field"""
