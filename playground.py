@@ -208,11 +208,11 @@ class PlayGround:
     def generate_tag():
         return uuid.uuid4().bytes
 
-    def __init__(self, x, y, num_colors):
+    def __init__(self, x, y, palette):
         """Dimensions x, y, number of colors available"""
         self.x = x
         self.y = y
-        self.palette = FieldColorPalette(num_colors=num_colors)
+        self.palette = palette
         self.field = [[Field(self.palette) for i in range(x)] for i in range(y)]
 
     def inside(self, pos):
