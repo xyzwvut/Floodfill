@@ -222,6 +222,15 @@ class PlayGround:
         else:
             return False
 
+    def copy(self):
+        new = PlayGround(self.x, self.y, self.palette)
+
+        for i in range(self.x):
+            for j in range(self.y):
+                c = self.field[i][j].get_color()
+                new.field[i][j].set_color(c)
+        return new
+
     def fill_random(self):
         """Fill the field with random"""
         for i in range(self.x):
