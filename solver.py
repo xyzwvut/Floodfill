@@ -6,6 +6,7 @@ from playground import Position, FieldColorPalette
 
 """
  TODO:
+ - Where to store the playground?
 """
 
 class Area:
