@@ -131,7 +131,7 @@ class Solver:
     def __init__(self, pg, strategy):
         self.pg = pg
         self.strategy = strategy
-        self.area = Area(pg, Position(pg, 0, 0))
+        self.area = Area(self.pg, Position(self.pg, 0, 0))
 
     def step(self, n):
         """Find the next step, do it"""
