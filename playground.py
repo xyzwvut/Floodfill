@@ -204,6 +204,10 @@ class PlayGround:
     class OutOfBoundsException(Exception):
         pass
 
+    @staticmethod
+    def generate_tag():
+        return uuid.uuid4().bytes
+
     def __init__(self, x, y, num_colors):
         """Dimensions x, y, number of colors available"""
         self.x = x
@@ -243,4 +247,37 @@ class PlayGround:
         for i in range(self.x):
             for j in range(self.y):
                 self.field[i][j].remove_visited(tag)
+
+    def walk_helper(self, pos, color, handler, tag):
+        """Helper function to walk the playground
+        """
+
+        # Outside of the playground
+        if pos == None:
+            return
+
+        field = self.get_field(pos)
+
+        if field.is_visited(tag):
+            return
+
+        # Execute handler
+        handler(field, True)
+
+        field.set_visited(tag)
+
+        # Visit neighbours
+        self.walk_helper(pos.left(), color, handler, tag)
+        self.walk_helper(pos.right(), color, handler, tag)
+        self.walk_helper(pos.up(), color, handler, tag)
+        self.walk_helper(pos.down(), color, handler, tag)
+
+    def walk(self, handler):
+        """Visit all fields of the area"""
+        if not handler:
+            return
+
+        tag = PlayGround.generate_tag()
+        self.walk_helper(self.pos, self.get_color(), handler, tag)
+        self.pg.remove_visited(tag)
 
