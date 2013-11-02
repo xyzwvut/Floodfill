@@ -234,20 +234,42 @@ class MostPeripheralsStrategy:
         return colors[-1][0]
 
 
-class MostUnfloddedColorSolver:
+class MostUnfloodedColorStrategy:
     """Pick color that has the most unflooded fields"""
     def __init__(self, pg):
-        pass
+        self.area = Area(pg, Position(pg, 0, 0))
+        self.pg = pg
 
     def next_color(self):
         """
          1. Get color of current flood
          2. Get all adjacent fields
          3. Group by color count number of fields
-         4. Pick first color
+         4. Remove current color of the area
+         5. Pick first color
         """
-        pass
+        fc = self.area.get_color()
+        size = self.area.size()
 
+        #TODO: Make beautiful
+        palette = self.area.bordering_colors()
+        colors = {}
+        for c in self.area.pg.palette.colors:
+            if not c.is_equal(fc):
+                colors[c] = 0
+
+        for i in range(self.pg.x):
+            for j in range(self.pg.y):
+                c = self.pg.field[i][j].get_color()
+                if palette.contains(c):
+                    colors[c] += 1
+
+        # Remove current color
+        colors = sorted(colors.iteritems(), key=operator.itemgetter(1))
+        if colors[-1][1] == 0:
+            return None
+
+        return colors[-1][0]
 
 class GeneticSolver:
     """Genetic Algorithm"""
