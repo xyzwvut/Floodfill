@@ -275,6 +275,7 @@ class MostUnfloodedColorStrategy:
 
         return colors[-1][0]
 
+
 class GeneticSolver:
     """Genetic Algorithm"""
     def __init__(self, pg):
