@@ -167,7 +167,7 @@ class Solver:
         self.solution = solution
 
     def print_solution(self):
-        s = "Solution: "
+        s = "%s, Solution: " % self.strategy.name
         for c in self.solution:
             s += str(c)
         print s
@@ -178,6 +178,7 @@ class Strategy:
     """
     def __init__(self, pg):
         self.pg = pg
+        self.name = "Unnamed"
 
     def next_color(self):
         """Color picked for the next step"""
@@ -186,6 +187,7 @@ class Strategy:
 class RandomStrategy:
     """Pick a random color"""
     def __init__(self, pg):
+        self.name = "Random"
         self.area = Area(pg, Position(pg, 0, 0))
         pass
 
@@ -210,6 +212,7 @@ class RandomStrategy:
 class MostPeripheralsStrategy:
     """Pick color that has the most neighbouring fields"""
     def __init__(self, pg):
+        self.name = "MostPeripherals"
         self.area = Area(pg, Position(pg, 0, 0))
 
     def next_color(self):
@@ -237,6 +240,7 @@ class MostPeripheralsStrategy:
 class MostUnfloodedColorStrategy:
     """Pick color that has the most unflooded fields"""
     def __init__(self, pg):
+        self.name = "MostUnflooded"
         self.area = Area(pg, Position(pg, 0, 0))
         self.pg = pg
 
@@ -274,7 +278,7 @@ class MostUnfloodedColorStrategy:
 class GeneticSolver:
     """Genetic Algorithm"""
     def __init__(self, pg):
-        pass
+        self.name = "Genetic"
 
     def next_color(self):
         """
