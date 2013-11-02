@@ -210,7 +210,7 @@ class RandomStrategy:
 class MostPeripheralsStrategy:
     """Pick color that has the most neighbouring fields"""
     def __init__(self, pg):
-       self.area = Area(pg, Position(pg, 0, 0))
+        self.area = Area(pg, Position(pg, 0, 0))
 
     def next_color(self):
         """
@@ -231,7 +231,7 @@ class MostPeripheralsStrategy:
         if colors[-1][1] == 0:
             return None
 
-        return  colors[-1][0]
+        return colors[-1][0]
 
 
 class MostUnfloddedColorSolver:
