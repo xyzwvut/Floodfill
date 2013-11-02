@@ -125,6 +125,29 @@ class Step:
         self.color = color
 
 
+class Solution:
+    def __init__(self, pg, strategy):
+        self.strategy = strategy
+        self.steps = []
+
+    def add_step(self, color):
+        """Add a step into the solution"""
+        self.steps.append(color)
+
+    def __str__(self):
+        s = "%15s, Solution: " % self.strategy.name
+        for c in self.steps:
+            s += str(c)
+        return s
+
+    def better_than(self, solution):
+        """This solution is better than the other"""
+        if len(self.steps) < len(solution.steps):
+            return True
+        else:
+            return False
+
+
 class Solver:
     """Find the sequence of fills with the lowest number
        of steps to flood the whole board
@@ -147,14 +170,14 @@ class Solver:
         return color
 
     def solve(self):
-        # List of colors
-        solution = []
+        solution = Solution(self.pg, self.strategy)
 
         print "Solving"
 
+        n = 0
         while True:
-
-            color = self.step(len(solution))
+            n += 1
+            color = self.step(n)
 
             if color == None:
                 break
@@ -162,15 +185,10 @@ class Solver:
             self.pg.plot()
 
             # Verify valid step
-            solution.append(color)
+            solution.add_step(color)
 
         self.solution = solution
-
-    def print_solution(self):
-        s = "%s, Solution: " % self.strategy.name
-        for c in self.solution:
-            s += str(c)
-        print s
+        return solution
 
 
 class Strategy:

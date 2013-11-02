@@ -19,19 +19,15 @@ def main(args):
 
     p = pg.copy()
     solver1 = Solver(p, RandomStrategy(p))
-    solver1.solve()
+    print solver1.solve()
 
     p = pg.copy()
     solver2 = Solver(p, MostPeripheralsStrategy(p))
-    solver2.solve()
+    print solver2.solve()
 
     p = pg.copy()
     solver3 = Solver(p, MostUnfloodedColorStrategy(p))
-    solver3.solve()
-
-    solver1.print_solution()
-    solver2.print_solution()
-    solver3.print_solution()
+    print solver3.solve()
 
 
 if __name__ == '__main__':
