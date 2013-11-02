@@ -59,10 +59,17 @@ class FieldColorPalette:
                            palette.get_bg_color(idx))
             self.colors.append(c)
 
-    def add(self, field_color):
-        """Add color to palette"""
+    def contains(self, field_color):
+        """field_color part of the palette"""
         for c in self.colors:
             if c.is_equal(field_color):
+                return True
+            else:
+                return False
+
+    def add(self, field_color):
+        """Add color to palette"""
+        if self.contains(field_color):
                 return
 
         self.colors.append(field_color)
