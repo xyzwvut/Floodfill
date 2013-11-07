@@ -2,6 +2,7 @@ import operator
 import random
 import uuid
 
+from config import config
 from playground import Position, FieldColorPalette
 
 """
@@ -164,7 +165,8 @@ class Solver:
         if color == None:
             return None
 
-        print "Step %s, picked %s" % (n, color)
+        if config['verbosity']:
+            print "Step %s, picked %s" % (n, color)
 
         self.area.flood(color)
         return color
@@ -172,7 +174,8 @@ class Solver:
     def solve(self):
         solution = Solution(self.pg, self.strategy)
 
-        print "Solving"
+        if config['verbosity']:
+            print "Solving"
 
         n = 0
         while True:
@@ -182,7 +185,8 @@ class Solver:
             if color == None:
                 break
 
-            self.pg.plot()
+            if config['verbosity']:
+                self.pg.plot()
 
             # Verify valid step
             solution.add_step(color)
@@ -220,7 +224,8 @@ class RandomStrategy:
         if palette.num() == 0:
             return None
 
-        print "Available Colors: %s" % palette.plot()
+        if config['verbosity']:
+            print "Available Colors: %s" % palette.plot()
 
         # Pick a random color
         color = palette.get_a_color()

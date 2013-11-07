@@ -1,15 +1,29 @@
 #!/usr/bin/env python2.7
 
-import sys
+import argparse
 import random
+import sys
 
 from termcolor import colored
 
+from config import config
 from playground import PlayGround, Position, FieldColorPalette
 from solver import Area, Solver, RandomStrategy, MostPeripheralsStrategy, \
                    MostUnfloodedColorStrategy
 
-def main(args):
+def parse_cmdline(argv):
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-v', '--verbosity', action='count', default=0,
+                        help='increase output verbosity')
+
+    args = parser.parse_args(argv)
+    config['args'] = args
+    config['verbosity'] = args.verbosity
+
+
+def main(argv):
+    parse_cmdline(argv)
+
     print "Flood fill"
 
     fp = FieldColorPalette(num_colors=6)
