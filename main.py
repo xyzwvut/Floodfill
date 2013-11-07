@@ -12,6 +12,7 @@ from solver import Area, Solver, RandomStrategy, MostPeripheralsStrategy, \
                    MostUnfloodedColorStrategy
 
 def parse_cmdline(argv):
+    """Parse applications commandline and feed into global config"""
     parser = argparse.ArgumentParser()
     parser.add_argument('-v', '--verbosity', action='count', default=0,
                         help='increase output verbosity')
