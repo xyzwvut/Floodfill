@@ -10,6 +10,7 @@ class ColorPalette:
           'on_green', 'on_red', 'on_yellow')
 
     class OutOfColorsException(Exception):
+        """Not enough colors to satisfy request"""
         pass
 
     def __init__(self, num_colors=0):
@@ -173,6 +174,7 @@ class Position:
 
     # TODO: Iterate over dimensions
     class InvalidPosition(Exception):
+        """Requested position is not on the Playground"""
         pass
 
     def __init__(self, pg, x, y):
@@ -210,9 +212,6 @@ class Position:
 
 class PlayGround:
     """Playground"""
-
-    class OutOfBoundsException(Exception):
-        pass
 
     @staticmethod
     def generate_tag():
